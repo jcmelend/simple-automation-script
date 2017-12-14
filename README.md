@@ -24,7 +24,7 @@ Once dependencies have been installed, then execute command to run test cases:
 
 npm test
 
-Note: There is a bug in website that I am using where order total is not correct. Script will
+Note: There is a bug in website that I am using where order total is not correct. Script will pass
 when bug is resolved.
 
 Also, this is a simple script. Many this are missing from script which will be improved
