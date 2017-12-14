@@ -56,7 +56,7 @@ test.describe("Online Order suite", function() {
          * in CSV file and load data into dictionary))
          */
         // The total order amount expected for user to pay
-        var expectedOrderTotal = "200.00";; //"101.00";
+        var expectedOrderTotal = "1.00";; //"101.00";
 
         // visibleOrderTotal from table to search in order summary page
         var visibleOrderTotal = "200.00"; //"1,200.00";

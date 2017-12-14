@@ -25,13 +25,13 @@ WebOrderScreen.prototype.addRandomItems = function(totalToAdd) {
             if(i < totalToAdd) {
                 console.info("Adding random item");
                 elements[i].click();
-                driver.sleep(300); // TODO: fix this. Need to get rid of hard-coded waits.
             }else {
                 return;
             }
         }
     });
 
+    // Wait for shopping cart inputs to be available
     this.driver.wait(this.until.elementsLocated(this.By.xpath("//*[@id=\"shopping-cart\"]//input[@inputmode='numeric']")), 10000);
 };
 
