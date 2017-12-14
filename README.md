@@ -32,4 +32,5 @@ in future:
 
 1) Abstraction for each automation acceptance script test data
 2) Come up with better automation design patterns such as page object patter, journey pattern, etc.
+3) Allow to indicate which browser to use from CLI or config json file
 and many more..
