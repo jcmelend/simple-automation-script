@@ -25,7 +25,7 @@ WebOrderScreen.prototype.addRandomItems = function(totalToAdd) {
             if(i < totalToAdd) {
                 console.info("Adding random item");
                 elements[i].click();
-                driver.sleep(300); // fix this. Need to get rid of hard-coded waits.
+                driver.sleep(300); // TODO: fix this. Need to get rid of hard-coded waits.
             }else {
                 return;
             }
@@ -105,7 +105,7 @@ WebOrderScreen.prototype.gotToProcessPayment = function() {
 
     return driver.findElement(By.xpath(".//*[text()='Process Payment']")).click().then(function (value) {
         return driver.wait(until.elementLocated(By.xpath('//*[text()=\'New Order\']')), 10000).then(function (result) {
-            driver.sleep(1000);
+            driver.sleep(1000); // TODO: fix hard coded wait
             console.info("navigated to payment summary section.")
         });
     });
@@ -124,6 +124,11 @@ WebOrderScreen.prototype.findOrderTotal = function(orderTotal) {
     });
 };
 
+/**
+ * Find visible text that matches exactly the givne text.
+ * @param text
+ * @returns {PromiseLike<T> | Promise<T>}
+ */
 WebOrderScreen.prototype.findExactVisibleOrderTotal = function(text) {
     var exactText = this.By.xpath('//*[text()=\'$' + text + '\']');
     return this.driver.findElement(exactText).then(function(element) {
@@ -132,11 +137,20 @@ WebOrderScreen.prototype.findExactVisibleOrderTotal = function(text) {
     });
 };
 
+/**
+ * Find visible text matching given text
+ * @param text
+ * @returns {*}
+ */
 WebOrderScreen.prototype.findVisibleMatchingText = function(text) {
     var exactText = this.By.xpath('//*[contains(text(),\'' + text + '\']');
     return this.driver.findElement(exactText).isDisplayed();
 };
 
+/**
+ * Gets all the total items displayed in the order summary table
+ * @returns {PromiseLike<T> | Promise<T>}
+ */
 WebOrderScreen.prototype.getOrderTotalItems = function() {
     var orderTotalXpath = this.By.xpath('//div[@data-stepid=\'confirmation\']//table//tbody//tr');
     return this.driver.findElements(orderTotalXpath).then(function(elements){
@@ -145,6 +159,12 @@ WebOrderScreen.prototype.getOrderTotalItems = function() {
     });
 };
 
+/**
+ * Enter payment info
+ * @param creditCardNumber   The credit card to use
+ * @param experiationDate    the experiation date to use
+ * @param securityCode       the security code to use
+ */
 WebOrderScreen.prototype.enterPayment = function(creditCardNumber, experiationDate, securityCode) {
     var driver = this.hooks.getDriver();
     var By = this.hooks.getWebDriver().By;
