@@ -49,7 +49,7 @@ test.describe("Online Order suite", function() {
     /**
      * Tests start here
      */
-    test.it("Purchase one item with quantity of 12", function() {
+    test.it("Purchase one item with quantity of 2", function() {
 
         /**
          * TODO: Test Data starts here (An option is to put test data
