@@ -46,6 +46,7 @@ WebOrderScreen.prototype.addQuantity = function(row, quantity) {
     var driver = this.hooks.getDriver();
     var By = this.hooks.getWebDriver().By;
 
+    driver.findElement(By.xpath("//*[@id=\"shopping-cart\"]//input[@inputmode='numeric'][" + row +"]")).clear();
     return driver.findElement(By.xpath("//*[@id=\"shopping-cart\"]//input[@inputmode='numeric'][" + row +"]")).then(
         function (element) {
             return element.sendKeys(quantity).then(function() {
